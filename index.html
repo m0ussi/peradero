@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Peradoro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+</head>
+<body>
+    <div class="settings">
+        <label>Cycles: <input type="number" id="cycles" value="4" min="1" max="10"></label>
+        <label>Work (min): <input type="number" id="workTime" value="25" min="1" max="60"></label>
+        <label>Rest (min): <input type="number" id="restTime" value="5" min="1" max="30"></label>
+    </div>
+    <div class="container">
+        <div id="mode">Study</div>
+        <div id="timer">25:00</div>
+        <div id="session-counter">Session 1/4</div>
+        <div class="button-group">
+            <button id="start">Start</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill"></div>
+    </div>
+    <script src='script.js'></script>
+</body>
+</html>
