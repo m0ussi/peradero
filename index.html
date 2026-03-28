@@ -1,31 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Peradoro</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <link rel="shortcut icon" href="src/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perodoro</title>
 </head>
 <body>
-    <div class="settings">
-        <label>Cycles: <input type="number" id="cycles" value="4" min="1" max="10"></label>
-        <label>Work (min): <input type="number" id="workTime" value="25" min="1" max="60"></label>
-        <label>Rest (min): <input type="number" id="restTime" value="5" min="1" max="30"></label>
-    </div>
     <div class="container">
-        <div id="mode">Study</div>
-        <div id="timer">25:00</div>
-        <div id="session-counter">Session 1/4</div>
-        <div class="button-group">
-            <button id="start">Start</button>
-            <button id="reset">Reset</button>
+        <!-- Left Sidebar -->
+        <aside class="sidebar">
+            <h1>PERODORO</h1>
+            
+            <div class="timers-list">
+                <h2>Timers</h2>
+            </div>
+
+            <button class="add-timer-btn">+ Add Timer</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="main-buttons">
+                <button id="delete-timer-btn" class="btn-delete-main" style="display: none;">🗑️ Delete</button>
+                <button id="edit-timer-btn" class="btn-edit-main" style="display: none;">✏️ Edit</button>
+            </div>
+            
+            <div class="timer-display">
+                <h2 id="timer-title">Classic</h2>
+                
+                <div class="timer-circle">
+                    <div class="timer-inner">
+                        <span id="timer-value">25:00</span>
+                        <span id="timer-phase">Work</span>
+                    </div>
+                </div>
+
+                <div class="timer-info">
+                    <div class="info-item">
+                        <label>Work Time:</label>
+                        <span id="work-time">25m</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Rest Time:</label>
+                        <span id="rest-time">5m</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Repetitions:</label>
+                        <span id="repetitions">4</span>
+                    </div>
+                </div>
+
+                <div class="timer-controls">
+                    <button id="start-btn" class="btn-control btn-start">Start</button>
+                    <button id="pause-btn" class="btn-control btn-pause" disabled>Pause</button>
+                    <button id="reset-btn" class="btn-control btn-reset">Reset</button>
+                </div>
+
+                <div class="progress-info">
+                    <span>Cycle <span id="current-cycle">1</span> of <span id="total-cycles">4</span></span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for adding timer -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Create New Timer</h2>
+            
+            <div class="form-group">
+                <label>Timer Name:</label>
+                <input type="text" id="timer-name-input" placeholder="e.g., Deep Work">
+            </div>
+
+            <div class="form-group">
+                <label>Work Time (minutes):</label>
+                <input type="number" id="work-time-input" min="1" max="120" value="25">
+            </div>
+
+            <div class="form-group">
+                <label>Rest Time (minutes):</label>
+                <input type="number" id="rest-time-input" min="0" max="60" value="5">
+            </div>
+
+            <div class="form-group">
+                <label>Repetitions:</label>
+                <input type="number" id="reps-input" min="1" max="10" value="4">
+            </div>
+
+            <button id="create-btn" class="btn-create">Create Timer</button>
         </div>
     </div>
-    <div class="progress-bar">
-        <div id="progress-fill" class="progress-fill"></div>
-    </div>
-    <script src='script.js'></script>
+
+    <!-- Modal for editing timer -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-edit">&times;</span>
+            <h2>Edit Timer</h2>
+            
+            <div class="form-group">
+                <label>Timer Name:</label>
+                <input type="text" id="edit-timer-name-input" placeholder="e.g., Deep Work">
+            </div>
+
+            <div class="form-group">
+                <label>Work Time (minutes):</label>
+                <input type="number" id="edit-work-time-input" min="1" max="120" value="25">
+            </div>
+
+            <div class="form-group">
+                <label>Rest Time (minutes):</label>
+                <input type="number" id="edit-rest-time-input" min="0" max="60" value="5">
+            </div>
+
+            <div class="form-group">
+                <label>Repetitions:</label>
+                <input type="number" id="edit-reps-input" min="1" max="10" value="4">
+            </div>
+
+            <button id="save-edit-btn" class="btn-create">Save Changes</button>
+        </div>
+    </div>    <script src="script.js"></script>
 </body>
 </html>
